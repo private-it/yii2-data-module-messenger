@@ -1,0 +1,14 @@
+{
+  "messenger": {
+    "outPath": ".",
+    "source": {
+      "urlRefresh": "http://gii.it-private.ru/e-r-d2/refresh",
+      "urlGenerate": "http://gii.it-private.ru/e-r-d2/generate-module",
+      "params": {
+        "ns": "PrivateIT\\modules\\messenger",
+        "name": "Messenger",
+        "docId": "7ec4c410-3205-4fa9-b1f3-f642d8d3ceb4"
+      }
+    }
+  }
+}

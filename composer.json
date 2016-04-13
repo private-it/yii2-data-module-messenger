@@ -1,0 +1,10 @@
+{
+  "name": "private-it/yii2-data-module-messenger",
+  "description": "",
+  "license": "proprietary",
+  "autoload": {
+    "psr-4": {
+      "PrivateIT\\modules\\messenger\\": ""
+    }
+  }
+}
