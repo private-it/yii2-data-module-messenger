@@ -1,6 +1,6 @@
 {
   "messenger": {
-    "outPath": ".",
+    "outPath": "src",
     "source": {
       "urlRefresh": "http://gii.it-private.ru/e-r-d2/refresh",
       "urlGenerate": "http://gii.it-private.ru/e-r-d2/generate-module",
