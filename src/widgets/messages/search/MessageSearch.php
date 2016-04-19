@@ -36,7 +36,7 @@ class MessageSearch extends Model
         $query->orderBy(['id' => SORT_DESC]);
 
         $query->andWhere([
-            'group_id' => $groupId
+//            'group_id' => $groupId
         ]);
 
         $dataProvider = new ActiveDataProvider([

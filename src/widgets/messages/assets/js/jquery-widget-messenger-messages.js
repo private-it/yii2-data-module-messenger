@@ -25,9 +25,6 @@
         afterUpdateList: function(){
             var $messages = $('#messages-block');
             var $wrap = $messages.parent();
-            $('.js-user-message-textares').autoResize({
-                extraSpace: 1
-            });
             $wrap.scrollTop($messages.height());
 
         },

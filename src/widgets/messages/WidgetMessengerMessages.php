@@ -15,6 +15,7 @@ class WidgetMessengerMessages extends Widget
      * @var Group
      */
     public $group;
+    public $owner;
     public $blocked = false;
     public $newMessage = false;
     public $search = false;
@@ -33,7 +34,10 @@ class WidgetMessengerMessages extends Widget
     {
         /** @var MessageForm $model */
         $model = \Yii::createObject(MessageForm::className());
-        $model->group_id = ArrayHelper::getValue($this->group, 'id');
+        $model->setAttributes([
+            'owner' => $this->owner,
+            'group_id' => ArrayHelper::getValue($this->group, 'id'),
+        ], false);
 
         if ($model->load(\Yii::$app->request->post())) {
             if ($model->submit()) {

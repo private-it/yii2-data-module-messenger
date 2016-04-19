@@ -4,7 +4,7 @@ use yii\widgets\ActiveForm;
 use PrivateIT\modules\messenger\widgets\messages\components\ListView;
 
 /** @var integer $groupId */
-/** @var \app\modules\messenger\widgets\messenger\forms\MessageForm $model */
+/** @var \PrivateIT\modules\messenger\widgets\messages\forms\MessageForm $model */
 /** @var \yii\web\View $this */
 
 $search = \PrivateIT\modules\messenger\widgets\messages\search\MessageSearch::getInstance();

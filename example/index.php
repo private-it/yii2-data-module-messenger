@@ -8,6 +8,8 @@ $view = (new yii\web\Application(
     )
 ))->view;
 
+$user = (object)['id' => 777];
+
 \yii\bootstrap\BootstrapAsset::register($view);
 ?>
 <html>
@@ -18,16 +20,18 @@ $view = (new yii\web\Application(
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-6" style="padding: 50px; outline: 1px solid green;">
+        <div class="col-sm-6" style="padding: 50px; outline: 1px solid green;">
 
             <?= \PrivateIT\modules\messenger\widgets\messages\WidgetMessengerMessages::widget([
+                'owner' => $user,
                 'group' => new \PrivateIT\modules\messenger\models\Group()
             ]) ?>
 
         </div>
-        <div class="col-md-6" style="padding: 50px; outline: 1px solid green;">
+        <div class="col-sm-6" style="padding: 50px; outline: 1px solid green;">
 
             <?= \PrivateIT\modules\messenger\widgets\messages\WidgetMessengerMessages::widget([
+                'owner' => $user,
                 'group' => new \PrivateIT\modules\messenger\models\Group()
             ]) ?>
 

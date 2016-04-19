@@ -2,13 +2,13 @@
 
 namespace PrivateIT\modules\messenger\widgets\messages\forms;
 
-use Yii;
 use PrivateIT\modules\messenger\models\Group;
 use PrivateIT\modules\messenger\models\Member;
 use yii\base\Model;
 
 class MessageForm extends Model
 {
+    public $owner;
     public $text;
     public $group_id;
 
@@ -24,7 +24,6 @@ class MessageForm extends Model
     public function submit()
     {
         if ($this->validate()) {
-
             $member = $this->getMember();
             if ($member) {
                 if ($member->addMessage($this->text)) {
@@ -39,9 +38,9 @@ class MessageForm extends Model
     public function getMember()
     {
         $group = $this->getGroup();
-        $member = $group->getMembers()->andWhere(['user_id' => \Yii::$app->user->id])->one();
+        $member = $group->getMembers()->andWhere(['user_id' => $this->owner->id])->one();
         if (!$member) {
-            $member = $group->addMember(\Yii::$app->user->id);
+            $member = $group->addMember($this->owner->id);
         }
         return $member;
     }
@@ -53,7 +52,7 @@ class MessageForm extends Model
             $group = Group::find()->andWhere(['id' => $this->group_id])->one();
         }
         if (!$group) {
-            $ownerId = Yii::$app->user->id;
+            $ownerId = $this->owner->id;
             $group = Group::find()
                 ->andWhere([
                     'owner_id' => $ownerId,
