@@ -30,11 +30,42 @@ class MessengerModule extends Module
     public $tableNames = [];
 
     /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
+        $this->registerTranslations();
+    }
+
+    public function registerTranslations()
+    {
+        Yii::$app->i18n->translations['messenger/*'] = [
+            'class' => 'yii\i18n\PhpMessageSource',
+            'basePath' => __DIR__ . '/messages',
+        ];
+    }
+
+    /**
      * @return string
      */
     static function id()
     {
         return Inflector::slug(__NAMESPACE__);
+    }
+
+    /**
+     * @return string
+     */
+    public static function getInstance()
+    {
+        /** @var static $module */
+        if (!Yii::$app->hasModule(static::id())) {
+            Yii::$app->setModule(static::id(), [
+                'class' => static::className()
+            ]);
+        }
+        return Yii::$app->getModule(static::id());
     }
 
     /**
@@ -44,7 +75,7 @@ class MessengerModule extends Module
     public static function tableName($class)
     {
         /** @var static $module */
-        $module = Yii::$app->getModule(static::id());
+        $module = static::getInstance();
 
         if (array_key_exists($class::className(), $module->tableNames)) {
             return $module->tableNames[$class::className()];
