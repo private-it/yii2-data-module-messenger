@@ -284,14 +284,14 @@ class Member extends ActiveRecord
     }
 
     /**
-     * Присоединить пользователя в группу
+     * Присоединить пользователя в диалог
      *
      * @param $groupId
      * @param $userId
      * @return mixed
      * @throws \yii\base\InvalidConfigException
      */
-    public static function joinToGroup($groupId, $userId)
+    public static function joinToDialog($groupId, $userId)
     {
         $member = static::find()->andWhere([
             'group_id' => $groupId,
@@ -302,7 +302,7 @@ class Member extends ActiveRecord
         }
         /** @var static $member */
         $member = Yii::createObject(static::className());
-        $member->setGroupId($groupId);
+        $member->setDialogId($groupId);
         $member->setUserId($userId);
         $member->setStatus(static::STATUS_ACTIVE);
         if ($member->save(false)) {
@@ -312,13 +312,13 @@ class Member extends ActiveRecord
     }
 
     /**
-     * Добавить сообщение в группу
+     * Добавить сообщение в диалог
      *
      * @param $text
      * @return mixed
      */
     public function addMessage($text)
     {
-        return Message::send($this->getGroupId(), $this->getId(), $text);
+        return Message::send($this->getDialogId(), $this->getId(), $text);
     }
 }

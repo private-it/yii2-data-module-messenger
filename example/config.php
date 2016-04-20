@@ -3,6 +3,7 @@ return [
     'id' => 'app',
     'basePath' => __DIR__,
     'vendorPath' => VENDOR_PATH,
+    'bootstrap' => ['\PrivateIT\widgets\bootstrap\WidgetBootstrap'],
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',

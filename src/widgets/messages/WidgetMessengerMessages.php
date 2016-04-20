@@ -2,8 +2,9 @@
 
 namespace PrivateIT\modules\messenger\widgets\messages;
 
-use PrivateIT\modules\messenger\widgets\messages\forms\MessageForm;
-use PrivateIT\modules\messenger\models\Group;
+use PrivateIT\modules\messenger\models\Dialog;
+use PrivateIT\modules\messenger\models\Member;
+use yii\base\Model;
 use yii\base\Widget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
@@ -12,82 +13,36 @@ use yii\helpers\Json;
 class WidgetMessengerMessages extends Widget
 {
     /**
-     * @var Group
+     * @var Dialog
      */
-    public $group;
-    public $owner;
-    public $blocked = false;
-    public $newMessage = false;
-    public $search = false;
-
+    public $dialog;
     /**
-     * @var array
+     * @var Member
      */
-    public $options = ['class' => 'widget-messenger-messages'];
+    public $member;
 
-    /**
-     * @var array
-     */
-    public $clientOptions = [];
-
-    public function getContent()
+    static public function bootstrap()
     {
-        /** @var MessageForm $model */
-        $model = \Yii::createObject(MessageForm::className());
-        $model->setAttributes([
-            'owner' => $this->owner,
-            'group_id' => ArrayHelper::getValue($this->group, 'id'),
-        ], false);
+        $model = new Model();
+        if ($model->load($_POST)) {
 
-        if ($model->load(\Yii::$app->request->post())) {
-            if ($model->submit()) {
-                //\Yii::$app->response->refresh()->send();
-//                \Yii::$app->end();
-            }
         }
-
-        return $this->render('messages', [
-            'groupId' => $model->group_id,
-            'model' => $model,
-            'search' => $this->search,
-            'blocked' => $this->blocked,
-            'newMessage' => $this->newMessage,
-        ]);
     }
 
     /**
-     * Runs the widget.
+     * @inheritdoc
      */
     public function run()
     {
-        $id = $this->options['id'];
-        $options = Json::htmlEncode($this->getClientOptions());
-
-        $view = $this->getView();
-        WidgetMessengerMessagesAsset::register($view);
-        $view->registerJs("jQuery('#$id').widgetChatMessages($options);");
-
-        return Html::tag('div', $this->getContent(), $this->options);
+        return $this->getContent();
     }
 
-    /**
-     * Initializes the view.
-     */
-    public function init()
+    public function getContent()
     {
-        if (!isset($this->options['id'])) {
-            $this->options['id'] = $this->getId();
-        }
+        return $this->render('widget-messenger-messages', [
+            'dialog' => $this->dialog,
+            'member' => $this->member,
+        ]);
     }
 
-    /**
-     * Returns the options for the grid view JS widget.
-     * @return array the options
-     */
-    protected function getClientOptions()
-    {
-        return ArrayHelper::merge([
-            //'paramKey' => '',
-        ], $this->clientOptions);
-    }
 }

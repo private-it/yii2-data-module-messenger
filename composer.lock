@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "597cc8861bd31da349bdd5138f8c462d",
-    "content-hash": "27975356dcb8cf7212bcc908259fb582",
+    "hash": "0d51c19358bd9c2198596bdb134ffcd5",
+    "content-hash": "2bffc429cd9985455e93b0f28abbacfb",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -298,6 +298,28 @@
                 "html"
             ],
             "time": "2013-11-30 08:25:19"
+        },
+        {
+            "name": "private-it/yii2-widget-bootstrap",
+            "version": "0.1.0",
+            "source": {
+                "type": "git",
+                "url": "git@gitlab.com:private-it/yii2-widget-bootstrap.git",
+                "reference": "c9ae19b00a6fe5bb4319e05ba066fdf1a73aafd9"
+            },
+            "require": {
+                "yiisoft/yii2": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PrivateIT\\widgets\\bootstrap\\": "src"
+                }
+            },
+            "license": [
+                "proprietary"
+            ],
+            "time": "2016-04-20 11:39:39"
         },
         {
             "name": "yiisoft/yii2",

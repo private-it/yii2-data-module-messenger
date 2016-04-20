@@ -309,10 +309,10 @@ class Message extends ActiveRecord
         return $this->hasMany(static::findClass($class, __NAMESPACE__), ['message_id' => 'id']);
     }
 
-    public static function send($groupId, $memberId, $text){
+    public static function send($dialogId, $memberId, $text){
         /** @var static $message */
         $message = Yii::createObject(static::className());
-        $message->setGroupId($groupId);
+        $message->setDialogId($dialogId);
         $message->setMemberId($memberId);
         $message->setText($text);
         $message->setStatus(static::STATUS_ACTIVE);

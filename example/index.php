@@ -1,4 +1,6 @@
 <?php
+use \PrivateIT\modules\messenger\models\Dialog;
+use \PrivateIT\modules\messenger\models\Member;
 require __DIR__ . '/bootstrap.php';
 
 $view = (new yii\web\Application(
@@ -8,7 +10,38 @@ $view = (new yii\web\Application(
     )
 ))->view;
 
-$user = (object)['id' => 777];
+function prepare($params)
+{
+    $userId = $params['userId'];
+    $dialogId = $params['dialogId'];
+    $dialog = Dialog::findOne($dialogId);
+    if (null == $dialog) {
+        $dialog = new Dialog();
+        $dialog->setId($dialogId);
+        $dialog->setStatus(Member::STATUS_ACTIVE);
+        $dialog->save();
+    }
+
+    $memberId = $params['memberId'];
+    $member = Member::findOne($memberId);
+    if (null == $member) {
+        $member = new Member();
+        $member->setId($memberId);
+        $member->setUserId($userId);
+        $member->setDialogId($dialogId);
+        $member->setStatus(Member::STATUS_ACTIVE);
+        $member->save();
+    }
+}
+$params = [
+    'userId' => 77,
+    'dialogId' => 5,
+    'memberId' => 3,
+];
+prepare($params);
+
+$dialog = Dialog::findOne($params['dialogId']);
+$member = Member::findOne($params['memberId']);
 
 \yii\bootstrap\BootstrapAsset::register($view);
 ?>
@@ -23,16 +56,12 @@ $user = (object)['id' => 777];
         <div class="col-sm-6" style="padding: 50px; outline: 1px solid green;">
 
             <?= \PrivateIT\modules\messenger\widgets\messages\WidgetMessengerMessages::widget([
-                'owner' => $user,
-                'group' => new \PrivateIT\modules\messenger\models\Group()
+                'dialog' => $dialog,
+                'member' => $member,
             ]) ?>
 
-        </div>
-        <div class="col-sm-6" style="padding: 50px; outline: 1px solid green;">
-
-            <?= \PrivateIT\modules\messenger\widgets\messages\WidgetMessengerMessages::widget([
-                'owner' => $user,
-                'group' => new \PrivateIT\modules\messenger\models\Group()
+            <?= \PrivateIT\modules\messenger\widgets\form\WidgetMessengerForm::widget([
+                'member' => $member,
             ]) ?>
 
         </div>

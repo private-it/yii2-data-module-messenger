@@ -30,13 +30,13 @@ class MessageSearch extends Model
         return $this;
     }
 
-    public function search($groupId)
+    public function search($dialog)
     {
         $query = Message::find();
         $query->orderBy(['id' => SORT_DESC]);
 
         $query->andWhere([
-//            'group_id' => $groupId
+            'dialog_id' => $dialog->id
         ]);
 
         $dataProvider = new ActiveDataProvider([
