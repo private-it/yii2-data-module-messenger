@@ -29,6 +29,7 @@ class WidgetMessengerForm extends AbstractWidget
     {
         $model = new MessageForm();
         if ($model->load($app->request->post())) {
+            // TODO учесть права доступа
             $model->submit();
         }
         static::$models[$widgetId] = $model;

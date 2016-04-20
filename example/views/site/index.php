@@ -4,7 +4,16 @@ use \PrivateIT\modules\messenger\models\Member;
 
 $params = Yii::$app->params;
 $dialog = Dialog::findOne($params['dialogId']);
-$member = Member::findOne($params['memberId']);
+$member1 = Member::findOne($params['memberId']);
+$member2 = Member::findOne($params['memberId']+1);
+
+var_dump(sizeof($member2->unreadMessages));
+
+if (sizeof($member2->unreadMessages) > 5) {
+    foreach ($member2->unreadMessages as $unread) {
+        $member2->readMessage($unread->getMessageId());
+    }
+}
 ?>
 <div class="container-fluid">
     <div class="row">
@@ -13,12 +22,12 @@ $member = Member::findOne($params['memberId']);
             <?= \PrivateIT\modules\messenger\widgets\messages\WidgetMessengerMessages::widget([
                 'id' => 'messenger-messages',
                 'dialog' => $dialog,
-                'member' => $member,
+                'member' => $member1,
             ]) ?>
 
             <?= \PrivateIT\modules\messenger\widgets\form\WidgetMessengerForm::widget([
                 'id' => 'messenger-form',
-                'member' => $member,
+                'member' => $member1,
             ]) ?>
 
         </div>

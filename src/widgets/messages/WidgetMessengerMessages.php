@@ -25,6 +25,8 @@ class WidgetMessengerMessages extends AbstractWidget
 
     static public function bootstrap($app, $widgetId = '0')
     {
+        // TODO сюда добавить обработку смены статуса "прочтено"
+        // TODO учесть права доступа
     }
 
     public function getContent()

@@ -5,6 +5,7 @@
 namespace PrivateIT\modules\messenger\models;
 
 use PrivateIT\modules\messenger\MessengerModule;
+use PrivateIT\modules\messenger\models\query\MessageMemberStatusActiveQuery;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
@@ -22,6 +23,8 @@ use yii\db\Expression;
  * @property Dialog $dialog
  * @property MessageMemberStatus[] $messageMemberStatuses
  * @property Message[] $messages
+ *
+ * @property MessageMemberStatus[] $unreadMessages
  */
 class Member extends ActiveRecord
 {
@@ -320,5 +323,26 @@ class Member extends ActiveRecord
     public function addMessage($text)
     {
         return Message::send($this->getDialogId(), $this->getId(), $text);
+    }
+
+    /**
+     * Непрочитанные сообщения
+     *
+     * @return MessageMemberStatusActiveQuery
+     */
+    public function getUnreadMessages()
+    {
+        return $this->getMessageMemberStatuses()->andWhere(['status' => MessageMemberStatus::STATUS_ACTIVE]);
+    }
+
+    /**
+     * Установка статуса для сообщения "прочитано"
+     *
+     * @param $messageId
+     * @return int
+     */
+    public function readMessage($messageId)
+    {
+        return MessageMemberStatus::read($this->getId(), $messageId);
     }
 }

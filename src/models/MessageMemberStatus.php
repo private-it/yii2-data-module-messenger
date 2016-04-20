@@ -15,7 +15,7 @@ use yii\db\Expression;
  * @property integer $id
  * @property integer $member_id
  * @property integer $message_id
- * @property integer $satatus
+ * @property integer $status
  * @property string $updated_at
  * @property string $created_at
  *
@@ -81,7 +81,7 @@ class MessageMemberStatus extends ActiveRecord
             'id' => Yii::t('messenger/message-member-status', 'label.id'),
             'member_id' => Yii::t('messenger/message-member-status', 'label.member_id'),
             'message_id' => Yii::t('messenger/message-member-status', 'label.message_id'),
-            'satatus' => Yii::t('messenger/message-member-status', 'label.satatus'),
+            'status' => Yii::t('messenger/message-member-status', 'label.status'),
             'updated_at' => Yii::t('messenger/message-member-status', 'label.updated_at'),
             'created_at' => Yii::t('messenger/message-member-status', 'label.created_at'),
         ];
@@ -96,7 +96,7 @@ class MessageMemberStatus extends ActiveRecord
             'id' => Yii::t('messenger/message-member-status', 'hint.id'),
             'member_id' => Yii::t('messenger/message-member-status', 'hint.member_id'),
             'message_id' => Yii::t('messenger/message-member-status', 'hint.message_id'),
-            'satatus' => Yii::t('messenger/message-member-status', 'hint.satatus'),
+            'status' => Yii::t('messenger/message-member-status', 'hint.status'),
             'updated_at' => Yii::t('messenger/message-member-status', 'hint.updated_at'),
             'created_at' => Yii::t('messenger/message-member-status', 'hint.created_at'),
         ];
@@ -111,7 +111,7 @@ class MessageMemberStatus extends ActiveRecord
             'id' => Yii::t('messenger/message-member-status', 'placeholder.id'),
             'member_id' => Yii::t('messenger/message-member-status', 'placeholder.member_id'),
             'message_id' => Yii::t('messenger/message-member-status', 'placeholder.message_id'),
-            'satatus' => Yii::t('messenger/message-member-status', 'placeholder.satatus'),
+            'status' => Yii::t('messenger/message-member-status', 'placeholder.status'),
             'updated_at' => Yii::t('messenger/message-member-status', 'placeholder.updated_at'),
             'created_at' => Yii::t('messenger/message-member-status', 'placeholder.created_at'),
         ];
@@ -184,24 +184,24 @@ class MessageMemberStatus extends ActiveRecord
     }
 
     /**
-     * Get value from Satatus
+     * Get value from Status
      *
      * @return string
      */
-    public function getSatatus()
+    public function getStatus()
     {
-        return $this->satatus;
+        return $this->status;
     }
 
     /**
-     * Set value to Satatus
+     * Set value to Status
      *
      * @param $value
      * @return $this
      */
-    public function setSatatus($value)
+    public function setStatus($value)
     {
-        $this->satatus = $value;
+        $this->status = $value;
         return $this;
     }
 
@@ -271,4 +271,24 @@ class MessageMemberStatus extends ActiveRecord
         return $this->hasOne(static::findClass($class, __NAMESPACE__), ['id' => 'message_id']);
     }
 
+    /**
+     * Смена статуса на прочтено
+     *
+     * @param $memberId
+     * @param $messageId
+     * @return int
+     */
+    public static function read($memberId, $messageId)
+    {
+        var_dump($memberId, $messageId);
+        return static::updateAll(
+            [
+                'status' => static::STATUS_ARCHIVED
+            ],
+            [
+                'member_id' => $memberId,
+                'message_id' => $messageId,
+            ]
+        );
+    }
 }

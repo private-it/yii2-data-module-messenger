@@ -1,8 +1,10 @@
 <?php
 require __DIR__ . '/bootstrap.php';
 
+$config = require(__DIR__ . '/config.php');
+unset($config['components']['request']['cookieValidationKey']);
 $app = new yii\console\Application(array_replace_recursive(
-    require(__DIR__ . '/config.php'),
+    $config,
     [
         'id' => 'console',
     ]

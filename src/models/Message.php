@@ -309,7 +309,8 @@ class Message extends ActiveRecord
         return $this->hasMany(static::findClass($class, __NAMESPACE__), ['message_id' => 'id']);
     }
 
-    public static function send($dialogId, $memberId, $text){
+    public static function send($dialogId, $memberId, $text)
+    {
         /** @var static $message */
         $message = Yii::createObject(static::className());
         $message->setDialogId($dialogId);
@@ -317,6 +318,15 @@ class Message extends ActiveRecord
         $message->setText($text);
         $message->setStatus(static::STATUS_ACTIVE);
         if ($message->save(false)) {
+            foreach ($message->dialog->members as $member) {
+                if ($member->id != $memberId) {
+                    $status = new MessageMemberStatus;
+                    $status->setMessageId($message->id);
+                    $status->setMemberId($member->id);
+                    $status->setStatus(MessageMemberStatus::STATUS_ACTIVE);
+                    $status->save(false);
+                }
+            };
             return $message;
         }
         return false;

@@ -33,6 +33,17 @@ function prepare($params)
         $member->setStatus(Member::STATUS_ACTIVE);
         $member->save();
     }
+
+    $memberId = $params['memberId']+1;
+    $member = Member::findOne($memberId);
+    if (null == $member) {
+        $member = new Member();
+        $member->setId($memberId);
+        $member->setUserId($userId+1);
+        $member->setDialogId($dialogId);
+        $member->setStatus(Member::STATUS_ACTIVE);
+        $member->save();
+    }
 }
 
 prepare(Yii::$app->params);
