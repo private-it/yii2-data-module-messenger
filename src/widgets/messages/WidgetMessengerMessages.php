@@ -4,13 +4,15 @@ namespace PrivateIT\modules\messenger\widgets\messages;
 
 use PrivateIT\modules\messenger\models\Dialog;
 use PrivateIT\modules\messenger\models\Member;
+use PrivateIT\widgets\bootstrap\AbstractWidget;
 use yii\base\Model;
 use yii\base\Widget;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
+use yii\helpers\Inflector;
 use yii\helpers\Json;
 
-class WidgetMessengerMessages extends Widget
+class WidgetMessengerMessages extends AbstractWidget
 {
     /**
      * @var Dialog
@@ -21,20 +23,8 @@ class WidgetMessengerMessages extends Widget
      */
     public $member;
 
-    static public function bootstrap()
+    static public function bootstrap($app, $widgetId = '0')
     {
-        $model = new Model();
-        if ($model->load($_POST)) {
-
-        }
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function run()
-    {
-        return $this->getContent();
     }
 
     public function getContent()
@@ -44,5 +34,6 @@ class WidgetMessengerMessages extends Widget
             'member' => $this->member,
         ]);
     }
+
 
 }

@@ -1,26 +1,25 @@
 <?php
 namespace PrivateIT\modules\messenger\widgets\form;
 
-use PrivateIT\modules\messenger\models\Dialog;
 use PrivateIT\modules\messenger\models\Member;
 use PrivateIT\modules\messenger\widgets\form\forms\MessageForm;
-use yii\base\Model;
-use yii\base\Widget;
+use PrivateIT\widgets\bootstrap\AbstractWidget;
 use yii\web\Application;
-use yii\widgets\ActiveForm;
 
-class WidgetMessengerForm extends Widget
+class WidgetMessengerForm extends AbstractWidget
 {
-    /**
-     * @var MessageForm[]
-     */
-    static public $models;
     /**
      * @var Member
      */
     public $member;
-
+    /**
+     * @var MessageForm
+     */
     protected $_model;
+    /**
+     * @var MessageForm[]
+     */
+    static public $models;
 
     /**
      * @param Application $app
@@ -38,11 +37,6 @@ class WidgetMessengerForm extends Widget
     /**
      * @inheritdoc
      */
-    public function run()
-    {
-        return $this->getContent();
-    }
-
     public function getContent()
     {
         return $this->render('widget-messenger-form', [
