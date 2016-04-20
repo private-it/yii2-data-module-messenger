@@ -3,7 +3,7 @@
 <document>
     <documentId>7ec4c410-3205-4fa9-b1f3-f642d8d3ceb4</documentId>
     <title>Messenger</title>
-    <version>942</version>
+    <version>1324</version>
     <blocks>
         
         
@@ -23,6 +23,21 @@
         
     
         
+            <textArea>
+                <key>Field6</key>
+                <value>&#x414;&#x430;&#x442;&#x430; &#x43e;&#x431;&#x43d;&#x43e;&#x432;&#x43b;&#x435;&#x43d;&#x438;&#x44f;</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
     
         
     
@@ -30,7 +45,79 @@
     
         
             <textArea>
-                <key>Type6</key>
+                <key>Key1</key>
+                <value>id</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Type7</key>
+                <value>timestamp</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Field5</key>
+                <value>&#x414;&#x430;&#x442;&#x430; &#x441;&#x43e;&#x437;&#x434;&#x430;&#x43d;&#x438;&#x44f;</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Field3</key>
+                <value>&#x41f;&#x43e;&#x43b;&#x44c;&#x437;&#x43e;&#x432;&#x430;&#x442;&#x435;&#x43b;&#x44c;</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Key3</key>
+                <value>userId</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Field4</key>
+                <value>&#x421;&#x442;&#x430;&#x442;&#x443;&#x441;</value>
+            </textArea>
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Type5</key>
                 <value>timestamp</value>
             </textArea>
         
@@ -46,6 +133,30 @@
         
     
         
+            <textArea>
+                <key>Type6</key>
+                <value>timestamp</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Key6</key>
+                <value>updatedAt</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
     
         
     
@@ -55,18 +166,13 @@
     
         
             <textArea>
-                <key>Field6</key>
-                <value>&#x414;&#x430;&#x442;&#x430; &#x43e;&#x431;&#x43d;&#x43e;&#x432;&#x43b;&#x435;&#x43d;&#x438;&#x44f;</value>
+                <key>Type3</key>
+                <value>integer</value>
             </textArea>
         
     
         
     
-        
-            <textArea>
-                <key>Key1</key>
-                <value>id</value>
-            </textArea>
         
     
         
@@ -74,6 +180,8 @@
                 <key>Type1</key>
                 <value>pk</value>
             </textArea>
+        
+    
         
     
         
@@ -100,26 +208,10 @@
         
     
         
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
             <textArea>
-                <key>Name</key>
-                <value>Member</value>
+                <key>Field2</key>
+                <value>&#x414;&#x438;&#x430;&#x43b;&#x43e;&#x433;</value>
             </textArea>
-        
-    
-        
-    
         
     
         
@@ -134,16 +226,10 @@
         
     
         
-    
-        
-    
-        
             <textArea>
-                <key>Key3</key>
-                <value>userId</value>
+                <key>Key5</key>
+                <value>createdAt</value>
             </textArea>
-        
-    
         
     
         
@@ -166,26 +252,43 @@
         
     
         
-            <textArea>
-                <key>Field2</key>
-                <value>&#x413;&#x440;&#x443;&#x43f;&#x43f;&#x430;</value>
-            </textArea>
-        
     
         
-            <textArea>
-                <key>Field3</key>
-                <value>&#x41f;&#x43e;&#x43b;&#x44c;&#x437;&#x43e;&#x432;&#x430;&#x442;&#x435;&#x43b;&#x44c;</value>
-            </textArea>
+    
         
     
         
     
         
+    
+        
+    
+        
+    
+        
+    
+        
             <textArea>
-                <key>Field5</key>
-                <value>&#x414;&#x430;&#x442;&#x430; &#x441;&#x43e;&#x437;&#x434;&#x430;&#x43d;&#x438;&#x44f;</value>
+                <key>Key7</key>
+                <value>updatedAt</value>
             </textArea>
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Field7</key>
+                <value>&#x414;&#x430;&#x442;&#x430; &#x43e;&#x431;&#x43d;&#x43e;&#x432;&#x43b;&#x435;&#x43d;&#x438;&#x44f;</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
         
     
         
@@ -196,97 +299,17 @@
         
     
         
-    
-        
-    
-        
-    
-        
-    
-        
-            <textArea>
-                <key>Key5</key>
-                <value>createdAt</value>
-            </textArea>
-        
-    
-        
-    
-        
-    
-        
-    
-        
             <textArea>
                 <key>Key2</key>
-                <value>groupId</value>
-            </textArea>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-            <textArea>
-                <key>Type5</key>
-                <value>timestamp</value>
-            </textArea>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-            <textArea>
-                <key>Key6</key>
-                <value>updatedAt</value>
+                <value>dialogId</value>
             </textArea>
         
     
         
             <textArea>
-                <key>Field4</key>
-                <value>&#x421;&#x442;&#x430;&#x442;&#x443;&#x441;</value>
+                <key>Name</key>
+                <value>Member</value>
             </textArea>
-        
-    
-        
-    
-        
-    
-        
-            <textArea>
-                <key>Type3</key>
-                <value>integer</value>
-            </textArea>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
         
     
         
@@ -307,7 +330,7 @@
             
         
             
-                <field>&#x413;&#x440;&#x443;&#x43f;&#x43f;&#x430;</field>
+                <field>&#x414;&#x438;&#x430;&#x43b;&#x43e;&#x433;</field>
             
         
             
@@ -345,9 +368,13 @@
         
     
         
+    
+        
+    
+        
             <textArea>
-                <key>Field1</key>
-                <value>#</value>
+                <key>Field6</key>
+                <value>&#x414;&#x430;&#x442;&#x430; &#x441;&#x43e;&#x437;&#x434;&#x430;&#x43d;&#x438;&#x44f;</value>
             </textArea>
         
     
@@ -358,10 +385,7 @@
         
     
         
-            <textArea>
-                <key>Key6</key>
-                <value>createdAt</value>
-            </textArea>
+    
         
     
         
@@ -372,7 +396,10 @@
         
     
         
-    
+            <textArea>
+                <key>Type4</key>
+                <value>text</value>
+            </textArea>
         
     
         
@@ -388,7 +415,10 @@
         
     
         
-    
+            <textArea>
+                <key>Field7</key>
+                <value>&#x414;&#x430;&#x442;&#x430; &#x43e;&#x431;&#x43d;&#x43e;&#x432;&#x43b;&#x435;&#x43d;&#x438;&#x44f;</value>
+            </textArea>
         
     
         
@@ -403,12 +433,14 @@
         
     
         
+            <textArea>
+                <key>Field1</key>
+                <value>#</value>
+            </textArea>
+        
     
         
-            <textArea>
-                <key>Type3</key>
-                <value>fk</value>
-            </textArea>
+    
         
     
         
@@ -425,9 +457,11 @@
         
     
         
+    
+        
             <textArea>
-                <key>Key3</key>
-                <value>groupId</value>
+                <key>Key4</key>
+                <value>text</value>
             </textArea>
         
     
@@ -438,12 +472,57 @@
         
     
         
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
             <textArea>
-                <key>Field2</key>
-                <value>&#x423;&#x447;&#x430;&#x441;&#x442;&#x43d;&#x438;&#x43a;</value>
+                <key>Field4</key>
+                <value>&#x422;&#x435;&#x43a;&#x441;&#x442;</value>
             </textArea>
         
     
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Name</key>
+                <value>Message</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Field3</key>
+                <value>&#x414;&#x438;&#x430;&#x43b;&#x43e;&#x433;</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Type1</key>
+                <value>pk</value>
+            </textArea>
         
     
         
@@ -462,36 +541,17 @@
         
     
         
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
             <textArea>
-                <key>Type1</key>
-                <value>pk</value>
+                <key>Key6</key>
+                <value>createdAt</value>
             </textArea>
         
     
         
-    
-        
-    
+            <textArea>
+                <key>Type5</key>
+                <value>integer</value>
+            </textArea>
         
     
         
@@ -519,69 +579,17 @@
     
         
             <textArea>
-                <key>Name</key>
-                <value>Message</value>
-            </textArea>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-            <textArea>
                 <key>Key2</key>
                 <value>memberId</value>
             </textArea>
         
     
         
-            <textArea>
-                <key>Field6</key>
-                <value>&#x414;&#x430;&#x442;&#x430; &#x441;&#x43e;&#x437;&#x434;&#x430;&#x43d;&#x438;&#x44f;</value>
-            </textArea>
-        
-    
-        
     
         
             <textArea>
-                <key>Field4</key>
-                <value>&#x422;&#x435;&#x43a;&#x441;&#x442;</value>
-            </textArea>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-            <textArea>
-                <key>Field7</key>
-                <value>&#x414;&#x430;&#x442;&#x430; &#x43e;&#x431;&#x43d;&#x43e;&#x432;&#x43b;&#x435;&#x43d;&#x438;&#x44f;</value>
-            </textArea>
-        
-    
-        
-            <textArea>
-                <key>Field3</key>
-                <value>&#x413;&#x440;&#x443;&#x43f;&#x43f;&#x430;</value>
+                <key>Type3</key>
+                <value>fk</value>
             </textArea>
         
     
@@ -604,10 +612,41 @@
         
     
         
+    
+        
+    
+        
+    
+        
+    
+        
             <textArea>
-                <key>Type5</key>
-                <value>integer</value>
+                <key>Field5</key>
+                <value>&#x421;&#x442;&#x430;&#x442;&#x443;&#x441;</value>
             </textArea>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Key3</key>
+                <value>dialogId</value>
+            </textArea>
+        
+    
+        
+    
         
     
         
@@ -621,25 +660,11 @@
     
         
             <textArea>
-                <key>Key4</key>
-                <value>text</value>
+                <key>Field2</key>
+                <value>&#x423;&#x447;&#x430;&#x441;&#x442;&#x43d;&#x438;&#x43a;</value>
             </textArea>
         
     
-        
-    
-        
-            <textArea>
-                <key>Field5</key>
-                <value>&#x421;&#x442;&#x430;&#x442;&#x443;&#x441;</value>
-            </textArea>
-        
-    
-        
-            <textArea>
-                <key>Type4</key>
-                <value>text</value>
-            </textArea>
         
     
         
@@ -660,7 +685,7 @@
             
         
             
-                <field>&#x413;&#x440;&#x443;&#x43f;&#x43f;&#x430;</field>
+                <field>&#x414;&#x438;&#x430;&#x43b;&#x43e;&#x433;</field>
             
         
             
@@ -698,26 +723,6 @@
         
     
         
-            <textArea>
-                <key>Type5</key>
-                <value>timestamp</value>
-            </textArea>
-        
-    
-        
-            <textArea>
-                <key>Type3</key>
-                <value>integer</value>
-            </textArea>
-        
-    
-        
-    
-        
-    
-        
-    
-        
     
         
     
@@ -727,8 +732,8 @@
     
         
             <textArea>
-                <key>Field2</key>
-                <value>&#x412;&#x43b;&#x430;&#x434;&#x435;&#x43b;&#x435;&#x446;</value>
+                <key>Field6</key>
+                <value>&#x414;&#x430;&#x442;&#x430; &#x43e;&#x431;&#x43d;&#x43e;&#x432;&#x43b;&#x435;&#x43d;&#x438;&#x44f;</value>
             </textArea>
         
     
@@ -761,7 +766,97 @@
         
             <textArea>
                 <key>Key3</key>
-                <value>ownerType</value>
+                <value>inititatorUserId</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Field5</key>
+                <value>&#x414;&#x430;&#x442;&#x430; &#x441;&#x43e;&#x437;&#x434;&#x430;&#x43d;&#x438;&#x44f;</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Key5</key>
+                <value>createdAt</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Type6</key>
+                <value>timestamp</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Key6</key>
+                <value>updatedAt</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Field1</key>
+                <value>#</value>
+            </textArea>
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Type4</key>
+                <value>integer</value>
             </textArea>
         
     
@@ -782,71 +877,15 @@
         
             <textArea>
                 <key>Field4</key>
-                <value>&#x414;&#x430;&#x442;&#x430; &#x441;&#x43e;&#x437;&#x434;&#x430;&#x43d;&#x438;&#x44f;</value>
-            </textArea>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-            <textArea>
-                <key>Name</key>
-                <value>Group</value>
-            </textArea>
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-    
-        
-            <textArea>
-                <key>Key5</key>
-                <value>updatedAt</value>
+                <value>&#x421;&#x442;&#x430;&#x442;&#x443;&#x441;</value>
             </textArea>
         
     
         
             <textArea>
-                <key>Type2</key>
-                <value>integer</value>
+                <key>Field2</key>
+                <value>&#x41d;&#x430;&#x437;&#x432;&#x430;&#x43d;&#x438;&#x435;</value>
             </textArea>
-        
-    
         
     
         
@@ -865,9 +904,15 @@
         
     
         
+    
+        
+    
+        
+    
+        
             <textArea>
-                <key>Field1</key>
-                <value>#</value>
+                <key>Type5</key>
+                <value>timestamp</value>
             </textArea>
         
     
@@ -883,7 +928,121 @@
     
         
             <textArea>
-                <key>Type4</key>
+                <key>Key2</key>
+                <value>name</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Key1</key>
+                <value>id</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Name</key>
+                <value>Dialog</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Field3</key>
+                <value>&#x418;&#x43d;&#x438;&#x446;&#x438;&#x430;&#x442;&#x43e;&#x440;</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Key4</key>
+                <value>status</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Type2</key>
+                <value>string</value>
+            </textArea>
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Type3</key>
+                <value>integer</value>
+            </textArea>
+        
+    
+        
+    </textAreas>
+    
+        
+    
+    
+        
+            
+        
+            
+                <field>#</field>
+            
+        
+            
+                <field>&#x41d;&#x430;&#x437;&#x432;&#x430;&#x43d;&#x438;&#x435;</field>
+            
+        
+            
+                <field>&#x418;&#x43d;&#x438;&#x446;&#x438;&#x430;&#x442;&#x43e;&#x440;</field>
+            
+        
+            
+                <field>&#x421;&#x442;&#x430;&#x442;&#x443;&#x441;</field>
+            
+        
+            
+                <field>&#x414;&#x430;&#x442;&#x430; &#x441;&#x43e;&#x437;&#x434;&#x430;&#x43d;&#x438;&#x44f;</field>
+            
+        
+    
+    
+    
+    
+</block>
+
+        
+            
+
+<block>
+    <id>WntaNL2jzGjl</id>
+    <class>ERDEntityBlock4</class>
+    
+    
+        
+    
+    
+        
+    
+    <textAreas>
+        
+    
+        
+            <textArea>
+                <key>Type5</key>
                 <value>timestamp</value>
             </textArea>
         
@@ -896,16 +1055,46 @@
     
         
             <textArea>
-                <key>Key4</key>
-                <value>createdAt</value>
+                <key>Name</key>
+                <value>MessageMemberStatus</value>
             </textArea>
         
     
         
             <textArea>
-                <key>Field3</key>
-                <value>&#x422;&#x438;&#x43f; &#x432;&#x43b;&#x430;&#x434;&#x435;&#x43b;&#x44c;&#x446;&#x430;</value>
+                <key>Key4</key>
+                <value>satatus</value>
             </textArea>
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Key2</key>
+                <value>memberId</value>
+            </textArea>
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Type4</key>
+                <value>integer</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
         
     
         
@@ -924,12 +1113,36 @@
         
     
         
+    
+        
+    
+        
             <textArea>
-                <key>Key2</key>
-                <value>ownerId</value>
+                <key>Key6</key>
+                <value>createdAt</value>
             </textArea>
         
     
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Type2</key>
+                <value>fk</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Field1</key>
+                <value>#</value>
+            </textArea>
         
     
         
@@ -937,10 +1150,87 @@
         
             <textArea>
                 <key>Field5</key>
-                <value>&#x414;&#x430;&#x442;&#x430; &#x43e;&#x431;&#x43d;&#x43e;&#x432;&#x43b;&#x435;&#x43d;&#x438;&#x44f;</value>
+                <value>&#x41e;&#x431;&#x43d;&#x43e;&#x432;&#x43b;&#x435;&#x43d;&#x43e;</value>
             </textArea>
         
     
+        
+    
+        
+            <textArea>
+                <key>Field4</key>
+                <value>&#x421;&#x442;&#x430;&#x442;&#x443;&#x441;</value>
+            </textArea>
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Key3</key>
+                <value>messageId</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Type1</key>
+                <value>pk</value>
+            </textArea>
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Key5</key>
+                <value>updatedAt</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Field2</key>
+                <value>&#x423;&#x447;&#x430;&#x441;&#x442;&#x43d;&#x438;&#x43a;</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Field3</key>
+                <value>&#x421;&#x43e;&#x43e;&#x431;&#x449;&#x435;&#x43d;&#x438;&#x435;</value>
+            </textArea>
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Type6</key>
+                <value>timestamp</value>
+            </textArea>
+        
+    
+        
+            <textArea>
+                <key>Type3</key>
+                <value>fk</value>
+            </textArea>
+        
+    
+        
+    
+        
+    
+        
+            <textArea>
+                <key>Field6</key>
+                <value>&#x421;&#x43e;&#x437;&#x434;&#x430;&#x43d;&#x43e;</value>
+            </textArea>
         
     </textAreas>
     
@@ -955,15 +1245,19 @@
             
         
             
-                <field>&#x412;&#x43b;&#x430;&#x434;&#x435;&#x43b;&#x435;&#x446;</field>
+                <field>&#x423;&#x447;&#x430;&#x441;&#x442;&#x43d;&#x438;&#x43a;</field>
             
         
             
-                <field>&#x422;&#x438;&#x43f; &#x432;&#x43b;&#x430;&#x434;&#x435;&#x43b;&#x44c;&#x446;&#x430;</field>
+                <field>&#x421;&#x43e;&#x43e;&#x431;&#x449;&#x435;&#x43d;&#x438;&#x435;</field>
             
         
             
-                <field>&#x414;&#x430;&#x442;&#x430; &#x441;&#x43e;&#x437;&#x434;&#x430;&#x43d;&#x438;&#x44f;</field>
+                <field>&#x421;&#x442;&#x430;&#x442;&#x443;&#x441;</field>
+            
+        
+            
+                <field>&#x41e;&#x431;&#x43d;&#x43e;&#x432;&#x43b;&#x435;&#x43d;&#x43e;</field>
             
         
     
@@ -976,6 +1270,36 @@
     </blocks>
     <lines>
         
+        
+            
+
+<line>
+    <id>8ptafbcGqXKE</id>
+    <endpoint1>
+        <style>CFN ERD One Arrow</style>
+        
+            <block>kueS-671MTeR</block>
+        
+        
+    </endpoint1>
+    <endpoint2>
+        <style>CFN ERD Many Arrow</style>
+        
+            <block>WntaNL2jzGjl</block>
+        
+        
+    </endpoint2>
+    
+        
+            
+        
+    
+        
+             <text>id:memberId</text> 
+        
+    
+</line>
+
         
             
 
@@ -1001,7 +1325,7 @@
         
     
         
-             <text>id:groupId</text> 
+             <text>id:dialogId</text> 
         
     
 </line>
@@ -1061,7 +1385,37 @@
         
     
         
-             <text>id:groupId</text> 
+             <text>id:dialogId</text> 
+        
+    
+</line>
+
+        
+            
+
+<line>
+    <id>tqtaN0XrY2mE</id>
+    <endpoint1>
+        <style>CFN ERD One Arrow</style>
+        
+            <block>WEdSD8rTpvkE</block>
+        
+        
+    </endpoint1>
+    <endpoint2>
+        <style>CFN ERD Many Arrow</style>
+        
+            <block>WntaNL2jzGjl</block>
+        
+        
+    </endpoint2>
+    
+        
+            
+        
+    
+        
+             <text>id:messageId</text> 
         
     
 </line>

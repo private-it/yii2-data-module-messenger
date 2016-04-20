@@ -7,10 +7,10 @@ use yii\db\Schema;
 use yii\db\Migration;
 
 /**
- * m160413_213550_002_create_message
+ * m160420_090754_002_create_message
  *
  */
-class m160413_213550_002_create_message extends Migration
+class m160420_090754_002_create_message extends Migration
 {
     /**
      * @inheritdoc
@@ -25,7 +25,7 @@ class m160413_213550_002_create_message extends Migration
         $this->createTable(\PrivateIT\modules\messenger\models\Message::tableName(), [
             'id' => $this->primaryKey(),
             'member_id' => $this->integer()->defaultValue(0),
-            'group_id' => $this->integer()->defaultValue(0),
+            'dialog_id' => $this->integer()->defaultValue(0),
             'text' => $this->text()->defaultValue(""),
             'status' => $this->integer()->defaultValue(0),
             'created_at' => $this->timestamp()->defaultValue(null),

@@ -7,10 +7,10 @@ use yii\db\Schema;
 use yii\db\Migration;
 
 /**
- * m160413_213550_003_create_group
+ * m160420_090754_001_create_member
  *
  */
-class m160413_213550_003_create_group extends Migration
+class m160420_090754_001_create_member extends Migration
 {
     /**
      * @inheritdoc
@@ -22,10 +22,11 @@ class m160413_213550_003_create_group extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE=InnoDB';
         }
 
-        $this->createTable(\PrivateIT\modules\messenger\models\Group::tableName(), [
+        $this->createTable(\PrivateIT\modules\messenger\models\Member::tableName(), [
             'id' => $this->primaryKey(),
-            'owner_id' => $this->integer()->defaultValue(0),
-            'owner_type' => $this->integer()->defaultValue(0),
+            'dialog_id' => $this->integer()->defaultValue(0),
+            'user_id' => $this->integer()->defaultValue(0),
+            'status' => $this->integer()->defaultValue(0),
             'created_at' => $this->timestamp()->defaultValue(null),
             'updated_at' => $this->timestamp()->defaultValue(null),
         ], $tableOptions);
@@ -36,6 +37,6 @@ class m160413_213550_003_create_group extends Migration
      */
     public function down()
     {
-        $this->dropTable(\PrivateIT\modules\messenger\models\Group::tableName());
+        $this->dropTable(\PrivateIT\modules\messenger\models\Member::tableName());
     }
 }

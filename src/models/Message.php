@@ -14,14 +14,15 @@ use yii\db\Expression;
  *
  * @property integer $id
  * @property integer $member_id
- * @property integer $group_id
+ * @property integer $dialog_id
  * @property string $text
  * @property integer $status
  * @property string $created_at
  * @property string $updated_at
  *
- * @property Group $group
+ * @property Dialog $dialog
  * @property Member $member
+ * @property MessageMemberStatus[] $messageMemberStatuses
  */
 class Message extends ActiveRecord
 {
@@ -81,7 +82,7 @@ class Message extends ActiveRecord
         return [
             'id' => Yii::t('messenger/message', 'label.id'),
             'member_id' => Yii::t('messenger/message', 'label.member_id'),
-            'group_id' => Yii::t('messenger/message', 'label.group_id'),
+            'dialog_id' => Yii::t('messenger/message', 'label.dialog_id'),
             'text' => Yii::t('messenger/message', 'label.text'),
             'status' => Yii::t('messenger/message', 'label.status'),
             'created_at' => Yii::t('messenger/message', 'label.created_at'),
@@ -97,7 +98,7 @@ class Message extends ActiveRecord
         return [
             'id' => Yii::t('messenger/message', 'hint.id'),
             'member_id' => Yii::t('messenger/message', 'hint.member_id'),
-            'group_id' => Yii::t('messenger/message', 'hint.group_id'),
+            'dialog_id' => Yii::t('messenger/message', 'hint.dialog_id'),
             'text' => Yii::t('messenger/message', 'hint.text'),
             'status' => Yii::t('messenger/message', 'hint.status'),
             'created_at' => Yii::t('messenger/message', 'hint.created_at'),
@@ -113,7 +114,7 @@ class Message extends ActiveRecord
         return [
             'id' => Yii::t('messenger/message', 'placeholder.id'),
             'member_id' => Yii::t('messenger/message', 'placeholder.member_id'),
-            'group_id' => Yii::t('messenger/message', 'placeholder.group_id'),
+            'dialog_id' => Yii::t('messenger/message', 'placeholder.dialog_id'),
             'text' => Yii::t('messenger/message', 'placeholder.text'),
             'status' => Yii::t('messenger/message', 'placeholder.status'),
             'created_at' => Yii::t('messenger/message', 'placeholder.created_at'),
@@ -166,24 +167,24 @@ class Message extends ActiveRecord
     }
 
     /**
-     * Get value from GroupId
+     * Get value from DialogId
      *
      * @return string
      */
-    public function getGroupId()
+    public function getDialogId()
     {
-        return $this->group_id;
+        return $this->dialog_id;
     }
 
     /**
-     * Set value to GroupId
+     * Set value to DialogId
      *
      * @param $value
      * @return $this
      */
-    public function setGroupId($value)
+    public function setDialogId($value)
     {
-        $this->group_id = $value;
+        $this->dialog_id = $value;
         return $this;
     }
 
@@ -276,14 +277,14 @@ class Message extends ActiveRecord
     }
 
     /**
-     * Get relation Group
+     * Get relation Dialog
      *
      * @param string $class
-     * @return query\GroupActiveQuery
+     * @return query\DialogActiveQuery
      */
-    public function getGroup($class = '\Group')
+    public function getDialog($class = '\Dialog')
     {
-        return $this->hasOne(static::findClass($class, __NAMESPACE__), ['id' => 'group_id']);
+        return $this->hasOne(static::findClass($class, __NAMESPACE__), ['id' => 'dialog_id']);
     }
 
     /**
@@ -295,6 +296,17 @@ class Message extends ActiveRecord
     public function getMember($class = '\Member')
     {
         return $this->hasOne(static::findClass($class, __NAMESPACE__), ['id' => 'member_id']);
+    }
+
+    /**
+     * Get relation MessageMemberStatus[]
+     *
+     * @param string $class
+     * @return query\MessageMemberStatusActiveQuery
+     */
+    public function getMessageMemberStatuses($class = '\MessageMemberStatus')
+    {
+        return $this->hasMany(static::findClass($class, __NAMESPACE__), ['message_id' => 'id']);
     }
 
     public static function send($groupId, $memberId, $text){

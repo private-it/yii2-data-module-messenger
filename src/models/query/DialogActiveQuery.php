@@ -4,17 +4,17 @@
  */
 namespace PrivateIT\modules\messenger\models\query;
 
-use PrivateIT\modules\messenger\models\Group;
+use PrivateIT\modules\messenger\models\Dialog;
 
 /**
- * GroupActiveQuery
+ * DialogActiveQuery
  *
  */
-class GroupActiveQuery extends ActiveQuery
+class DialogActiveQuery extends ActiveQuery
 {
     /**
      * @inheritdoc
-     * @return Group[]|array
+     * @return Dialog[]|array
      */
     public function all($db = null)
     {
@@ -23,7 +23,7 @@ class GroupActiveQuery extends ActiveQuery
 
     /**
      * @inheritdoc
-     * @return Group|array|null
+     * @return Dialog|array|null
      */
     public function one($db = null)
     {

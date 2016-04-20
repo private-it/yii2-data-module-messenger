@@ -13,13 +13,14 @@ use yii\db\Expression;
  * Member
  *
  * @property integer $id
- * @property integer $group_id
+ * @property integer $dialog_id
  * @property integer $user_id
  * @property integer $status
  * @property string $created_at
  * @property string $updated_at
  *
- * @property Group $group
+ * @property Dialog $dialog
+ * @property MessageMemberStatus[] $messageMemberStatuses
  * @property Message[] $messages
  */
 class Member extends ActiveRecord
@@ -79,7 +80,7 @@ class Member extends ActiveRecord
     {
         return [
             'id' => Yii::t('messenger/member', 'label.id'),
-            'group_id' => Yii::t('messenger/member', 'label.group_id'),
+            'dialog_id' => Yii::t('messenger/member', 'label.dialog_id'),
             'user_id' => Yii::t('messenger/member', 'label.user_id'),
             'status' => Yii::t('messenger/member', 'label.status'),
             'created_at' => Yii::t('messenger/member', 'label.created_at'),
@@ -94,7 +95,7 @@ class Member extends ActiveRecord
     {
         return [
             'id' => Yii::t('messenger/member', 'hint.id'),
-            'group_id' => Yii::t('messenger/member', 'hint.group_id'),
+            'dialog_id' => Yii::t('messenger/member', 'hint.dialog_id'),
             'user_id' => Yii::t('messenger/member', 'hint.user_id'),
             'status' => Yii::t('messenger/member', 'hint.status'),
             'created_at' => Yii::t('messenger/member', 'hint.created_at'),
@@ -109,7 +110,7 @@ class Member extends ActiveRecord
     {
         return [
             'id' => Yii::t('messenger/member', 'placeholder.id'),
-            'group_id' => Yii::t('messenger/member', 'placeholder.group_id'),
+            'dialog_id' => Yii::t('messenger/member', 'placeholder.dialog_id'),
             'user_id' => Yii::t('messenger/member', 'placeholder.user_id'),
             'status' => Yii::t('messenger/member', 'placeholder.status'),
             'created_at' => Yii::t('messenger/member', 'placeholder.created_at'),
@@ -140,24 +141,24 @@ class Member extends ActiveRecord
     }
 
     /**
-     * Get value from GroupId
+     * Get value from DialogId
      *
      * @return string
      */
-    public function getGroupId()
+    public function getDialogId()
     {
-        return $this->group_id;
+        return $this->dialog_id;
     }
 
     /**
-     * Set value to GroupId
+     * Set value to DialogId
      *
      * @param $value
      * @return $this
      */
-    public function setGroupId($value)
+    public function setDialogId($value)
     {
-        $this->group_id = $value;
+        $this->dialog_id = $value;
         return $this;
     }
 
@@ -250,14 +251,25 @@ class Member extends ActiveRecord
     }
 
     /**
-     * Get relation Group
+     * Get relation Dialog
      *
      * @param string $class
-     * @return query\GroupActiveQuery
+     * @return query\DialogActiveQuery
      */
-    public function getGroup($class = '\Group')
+    public function getDialog($class = '\Dialog')
     {
-        return $this->hasOne(static::findClass($class, __NAMESPACE__), ['id' => 'group_id']);
+        return $this->hasOne(static::findClass($class, __NAMESPACE__), ['id' => 'dialog_id']);
+    }
+
+    /**
+     * Get relation MessageMemberStatus[]
+     *
+     * @param string $class
+     * @return query\MessageMemberStatusActiveQuery
+     */
+    public function getMessageMemberStatuses($class = '\MessageMemberStatus')
+    {
+        return $this->hasMany(static::findClass($class, __NAMESPACE__), ['member_id' => 'id']);
     }
 
     /**

@@ -10,18 +10,19 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
 
 /**
- * Group
+ * Dialog
  *
  * @property integer $id
- * @property integer $owner_id
- * @property integer $owner_type
+ * @property string $name
+ * @property integer $inititator_user_id
+ * @property integer $status
  * @property string $created_at
  * @property string $updated_at
  *
  * @property Member[] $members
  * @property Message[] $messages
  */
-class Group extends ActiveRecord
+class Dialog extends ActiveRecord
 {
     const STATUS_ARCHIVED = -1;
     const STATUS_DELETED = 0;
@@ -35,15 +36,15 @@ class Group extends ActiveRecord
     static function getStatuses()
     {
         return [
-            static::STATUS_ARCHIVED => Yii::t('messenger/group', 'const.status.archived'),
-            static::STATUS_DELETED => Yii::t('messenger/group', 'const.status.deleted'),
-            static::STATUS_ACTIVE => Yii::t('messenger/group', 'const.status.active'),
+            static::STATUS_ARCHIVED => Yii::t('messenger/dialog', 'const.status.archived'),
+            static::STATUS_DELETED => Yii::t('messenger/dialog', 'const.status.deleted'),
+            static::STATUS_ACTIVE => Yii::t('messenger/dialog', 'const.status.active'),
         ];
     }
 
     /**
      * @inheritdoc
-     * @return query\GroupActiveQuery the newly created [[ActiveQuery]] instance.
+     * @return query\DialogActiveQuery the newly created [[ActiveQuery]] instance.
      */
     public static function find()
     {
@@ -77,11 +78,12 @@ class Group extends ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('messenger/group', 'label.id'),
-            'owner_id' => Yii::t('messenger/group', 'label.owner_id'),
-            'owner_type' => Yii::t('messenger/group', 'label.owner_type'),
-            'created_at' => Yii::t('messenger/group', 'label.created_at'),
-            'updated_at' => Yii::t('messenger/group', 'label.updated_at'),
+            'id' => Yii::t('messenger/dialog', 'label.id'),
+            'name' => Yii::t('messenger/dialog', 'label.name'),
+            'inititator_user_id' => Yii::t('messenger/dialog', 'label.inititator_user_id'),
+            'status' => Yii::t('messenger/dialog', 'label.status'),
+            'created_at' => Yii::t('messenger/dialog', 'label.created_at'),
+            'updated_at' => Yii::t('messenger/dialog', 'label.updated_at'),
         ];
     }
 
@@ -91,11 +93,12 @@ class Group extends ActiveRecord
     public function attributeHints()
     {
         return [
-            'id' => Yii::t('messenger/group', 'hint.id'),
-            'owner_id' => Yii::t('messenger/group', 'hint.owner_id'),
-            'owner_type' => Yii::t('messenger/group', 'hint.owner_type'),
-            'created_at' => Yii::t('messenger/group', 'hint.created_at'),
-            'updated_at' => Yii::t('messenger/group', 'hint.updated_at'),
+            'id' => Yii::t('messenger/dialog', 'hint.id'),
+            'name' => Yii::t('messenger/dialog', 'hint.name'),
+            'inititator_user_id' => Yii::t('messenger/dialog', 'hint.inititator_user_id'),
+            'status' => Yii::t('messenger/dialog', 'hint.status'),
+            'created_at' => Yii::t('messenger/dialog', 'hint.created_at'),
+            'updated_at' => Yii::t('messenger/dialog', 'hint.updated_at'),
         ];
     }
 
@@ -105,11 +108,12 @@ class Group extends ActiveRecord
     public function attributePlaceholders()
     {
         return [
-            'id' => Yii::t('messenger/group', 'placeholder.id'),
-            'owner_id' => Yii::t('messenger/group', 'placeholder.owner_id'),
-            'owner_type' => Yii::t('messenger/group', 'placeholder.owner_type'),
-            'created_at' => Yii::t('messenger/group', 'placeholder.created_at'),
-            'updated_at' => Yii::t('messenger/group', 'placeholder.updated_at'),
+            'id' => Yii::t('messenger/dialog', 'placeholder.id'),
+            'name' => Yii::t('messenger/dialog', 'placeholder.name'),
+            'inititator_user_id' => Yii::t('messenger/dialog', 'placeholder.inititator_user_id'),
+            'status' => Yii::t('messenger/dialog', 'placeholder.status'),
+            'created_at' => Yii::t('messenger/dialog', 'placeholder.created_at'),
+            'updated_at' => Yii::t('messenger/dialog', 'placeholder.updated_at'),
         ];
     }
 
@@ -136,46 +140,68 @@ class Group extends ActiveRecord
     }
 
     /**
-     * Get value from OwnerId
+     * Get value from Name
      *
      * @return string
      */
-    public function getOwnerId()
+    public function getName()
     {
-        return $this->owner_id;
+        return $this->name;
     }
 
     /**
-     * Set value to OwnerId
+     * Set value to Name
      *
      * @param $value
      * @return $this
      */
-    public function setOwnerId($value)
+    public function setName($value)
     {
-        $this->owner_id = $value;
+        $this->name = $value;
         return $this;
     }
 
     /**
-     * Get value from OwnerType
+     * Get value from InititatorUserId
      *
      * @return string
      */
-    public function getOwnerType()
+    public function getInititatorUserId()
     {
-        return $this->owner_type;
+        return $this->inititator_user_id;
     }
 
     /**
-     * Set value to OwnerType
+     * Set value to InititatorUserId
      *
      * @param $value
      * @return $this
      */
-    public function setOwnerType($value)
+    public function setInititatorUserId($value)
     {
-        $this->owner_type = $value;
+        $this->inititator_user_id = $value;
+        return $this;
+    }
+
+    /**
+     * Get value from Status
+     *
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * Set value to Status
+     *
+     * @param $value
+     * @return $this
+     */
+    public function setStatus($value)
+    {
+        $this->status = $value;
         return $this;
     }
 
@@ -231,7 +257,7 @@ class Group extends ActiveRecord
      */
     public function getMembers($class = '\Member')
     {
-        return $this->hasMany(static::findClass($class, __NAMESPACE__), ['group_id' => 'id']);
+        return $this->hasMany(static::findClass($class, __NAMESPACE__), ['dialog_id' => 'id']);
     }
 
     /**
@@ -242,17 +268,7 @@ class Group extends ActiveRecord
      */
     public function getMessages($class = '\Message')
     {
-        return $this->hasMany(static::findClass($class, __NAMESPACE__), ['group_id' => 'id']);
+        return $this->hasMany(static::findClass($class, __NAMESPACE__), ['dialog_id' => 'id']);
     }
 
-    /**
-     * Добавить пользователя в группу
-     *
-     * @param $userId
-     * @return mixed
-     */
-    public function addMember($userId)
-    {
-        return Member::joinToGroup($this->getId(), $userId);
-    }
 }
