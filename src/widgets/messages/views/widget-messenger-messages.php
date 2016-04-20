@@ -11,9 +11,7 @@ $search = \PrivateIT\modules\messenger\widgets\messages\search\MessageSearch::ge
 $dataProvider = $search->search($dialog);
 ?>
 
-<?php \yii\widgets\Pjax::begin([
-    'id' => 'messages-block'
-]); ?>
+<?php \yii\widgets\Pjax::begin(); ?>
 
 <?= ListView::widget([
     'dataProvider' => $dataProvider,

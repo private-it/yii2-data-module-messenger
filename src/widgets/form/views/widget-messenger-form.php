@@ -10,14 +10,10 @@ use yii\widgets\ActiveForm;
 $widget = $this->context;
 ?>
 
-<?php \yii\widgets\Pjax::begin([
-    'options' => [
-        'class' => 'js-submit-message-form'
-    ]
-]); ?>
+<?php \yii\widgets\Pjax::begin(); ?>
 <?php $form = ActiveForm::begin([
     'options' => [
-        'data-pjax' => 0
+        'data-pjax' => 1
     ]
 ]) ?>
 
