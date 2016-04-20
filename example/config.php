@@ -18,5 +18,10 @@ return [
         'request' => [
             'cookieValidationKey' => 'test'
         ]
+    ],
+    'params' => [
+        'userId' => 77,
+        'dialogId' => 5,
+        'memberId' => 3,
     ]
 ];

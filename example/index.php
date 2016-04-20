@@ -4,13 +4,12 @@ use \PrivateIT\modules\messenger\models\Member;
 
 require __DIR__ . '/bootstrap.php';
 
-$view = (new yii\web\Application(
+$app = (new yii\web\Application(
     array_replace_recursive(
         require(__DIR__ . '/config.php'),
         file_exists(__DIR__ . '/config-local.php') ? require __DIR__ . '/config-local.php' : []
     )
-))->view;
-$view->registerJsFile('/js/app.js', ['position' => $view::POS_END, 'depends' => '\yii\bootstrap\BootstrapPluginAsset']);
+));
 
 function prepare($params)
 {
@@ -36,43 +35,6 @@ function prepare($params)
     }
 }
 
-$params = [
-    'userId' => 77,
-    'dialogId' => 5,
-    'memberId' => 3,
-];
-prepare($params);
+prepare(Yii::$app->params);
 
-$dialog = Dialog::findOne($params['dialogId']);
-$member = Member::findOne($params['memberId']);
-
-?>
-<html>
-<?php $view->beginPage(); ?>
-<head><?php $view->head() ?></head>
-<body>
-<?php $view->beginBody() ?>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-6" style="padding: 50px; outline: 1px solid green;">
-
-            <?= \PrivateIT\modules\messenger\widgets\messages\WidgetMessengerMessages::widget([
-                'id' => 'messenger-messages',
-                'dialog' => $dialog,
-                'member' => $member,
-            ]) ?>
-
-            <?= \PrivateIT\modules\messenger\widgets\form\WidgetMessengerForm::widget([
-                'id' => 'messenger-form',
-                'member' => $member,
-            ]) ?>
-
-        </div>
-    </div>
-</div>
-
-<?php $view->endBody() ?>
-</body>
-<?php $view->endPage() ?>
-</html>
+$app->run();
