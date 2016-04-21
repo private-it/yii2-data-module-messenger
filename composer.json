@@ -20,6 +20,7 @@
   },
   "repositories": [
     {
+      "name": "private-it/yii2-widget-bootstrap",
       "type": "git",
       "url": "git@gitlab.com:private-it/yii2-widget-bootstrap.git"
     }
