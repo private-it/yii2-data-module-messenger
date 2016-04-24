@@ -14,7 +14,7 @@ use PrivateIT\modules\messenger\models\Message;
                 </div>
             </div>
             <div class="conversation__body clearfix ">
-                <div class="conversation__text"><?= $model->getText() ?></div>
+                <div class="conversation__text"><?= Yii::$app->formatter->asNtext($model->getText()) ?></div>
             </div>
         </div>
     </div>
