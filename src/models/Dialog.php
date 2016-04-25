@@ -14,7 +14,7 @@ use yii\db\Expression;
  *
  * @property integer $id
  * @property string $name
- * @property integer $inititator_user_id
+ * @property integer $initiator_user_id
  * @property integer $status
  * @property string $created_at
  * @property string $updated_at
@@ -80,7 +80,7 @@ class Dialog extends ActiveRecord
         return [
             'id' => Yii::t('messenger/dialog', 'label.id'),
             'name' => Yii::t('messenger/dialog', 'label.name'),
-            'inititator_user_id' => Yii::t('messenger/dialog', 'label.inititator_user_id'),
+            'initiator_user_id' => Yii::t('messenger/dialog', 'label.initiator_user_id'),
             'status' => Yii::t('messenger/dialog', 'label.status'),
             'created_at' => Yii::t('messenger/dialog', 'label.created_at'),
             'updated_at' => Yii::t('messenger/dialog', 'label.updated_at'),
@@ -95,7 +95,7 @@ class Dialog extends ActiveRecord
         return [
             'id' => Yii::t('messenger/dialog', 'hint.id'),
             'name' => Yii::t('messenger/dialog', 'hint.name'),
-            'inititator_user_id' => Yii::t('messenger/dialog', 'hint.inititator_user_id'),
+            'initiator_user_id' => Yii::t('messenger/dialog', 'hint.initiator_user_id'),
             'status' => Yii::t('messenger/dialog', 'hint.status'),
             'created_at' => Yii::t('messenger/dialog', 'hint.created_at'),
             'updated_at' => Yii::t('messenger/dialog', 'hint.updated_at'),
@@ -110,7 +110,7 @@ class Dialog extends ActiveRecord
         return [
             'id' => Yii::t('messenger/dialog', 'placeholder.id'),
             'name' => Yii::t('messenger/dialog', 'placeholder.name'),
-            'inititator_user_id' => Yii::t('messenger/dialog', 'placeholder.inititator_user_id'),
+            'initiator_user_id' => Yii::t('messenger/dialog', 'placeholder.initiator_user_id'),
             'status' => Yii::t('messenger/dialog', 'placeholder.status'),
             'created_at' => Yii::t('messenger/dialog', 'placeholder.created_at'),
             'updated_at' => Yii::t('messenger/dialog', 'placeholder.updated_at'),
@@ -162,24 +162,24 @@ class Dialog extends ActiveRecord
     }
 
     /**
-     * Get value from InititatorUserId
+     * Get value from InitiatorUserId
      *
      * @return string
      */
-    public function getInititatorUserId()
+    public function getInitiatorUserId()
     {
-        return $this->inititator_user_id;
+        return $this->initiator_user_id;
     }
 
     /**
-     * Set value to InititatorUserId
+     * Set value to InitiatorUserId
      *
      * @param $value
      * @return $this
      */
-    public function setInititatorUserId($value)
+    public function setInitiatorUserId($value)
     {
-        $this->inititator_user_id = $value;
+        $this->initiator_user_id = $value;
         return $this;
     }
 

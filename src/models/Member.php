@@ -289,15 +289,15 @@ class Member extends ActiveRecord
     /**
      * Присоединить пользователя в диалог
      *
-     * @param $groupId
+     * @param $dialogId
      * @param $userId
      * @return mixed
      * @throws \yii\base\InvalidConfigException
      */
-    public static function joinToDialog($groupId, $userId)
+    public static function joinToDialog($dialogId, $userId)
     {
         $member = static::find()->andWhere([
-            'group_id' => $groupId,
+            'dialog_id' => $dialogId,
             'user_id' => $userId
         ])->one();
         if ($member) {
@@ -305,7 +305,7 @@ class Member extends ActiveRecord
         }
         /** @var static $member */
         $member = Yii::createObject(static::className());
-        $member->setDialogId($groupId);
+        $member->setDialogId($dialogId);
         $member->setUserId($userId);
         $member->setStatus(static::STATUS_ACTIVE);
         if ($member->save(false)) {
