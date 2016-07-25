@@ -9,20 +9,12 @@
     }
   },
   "require": {
-    "yiisoft/yii2": "^2.0",
-    "yiisoft/yii2-bootstrap": "^2.0",
-    "private-it/yii2-widget-bootstrap": "^0.1"
+    "yiisoft/yii2": "^2.0"
   },
   "extra": {
     "asset-installer-paths": {
       "npm-asset-library": "vendor/npm",
       "bower-asset-library": "vendor/bower"
     }
-  },
-  "repositories": [
-    {
-      "type": "git",
-      "url": "git@gitlab.com:private-it/yii2-widget-bootstrap.git"
-    }
-  ]
+  }
 }
