@@ -40,10 +40,12 @@ class MessengerModule extends Module
 
     public function registerTranslations()
     {
-        Yii::$app->i18n->translations['messenger/*'] = [
-            'class' => 'yii\i18n\PhpMessageSource',
-            'basePath' => __DIR__ . '/messages',
-        ];
+        if (!isset(Yii::$app->i18n->translations['messenger/*'])) {
+            Yii::$app->i18n->translations['messenger/*'] = [
+                'class' => 'yii\i18n\PhpMessageSource',
+                'basePath' => __DIR__ . '/messages',
+            ];
+        }
     }
 
     /**
