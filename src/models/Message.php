@@ -357,7 +357,8 @@ class Message extends ActiveRecord
     public function getArchivedMessageStatuses()
     {
         return $this->getMessageMemberStatuses()
-            ->andOnCondition(['!=', 'member_id', $this->member_id])
-            ->andOnCondition(['status' => MessageMemberStatus::STATUS_ARCHIVED]);
+            ->alias('archivedMessageStatuses as archivedMessageStatuses')
+            ->andOnCondition(['!=', 'archivedMessageStatuses.member_id', $this->member_id])
+            ->andOnCondition(['archivedMessageStatuses.status' => MessageMemberStatus::STATUS_ARCHIVED]);
     }
 }
