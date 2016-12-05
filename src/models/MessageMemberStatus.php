@@ -271,24 +271,4 @@ class MessageMemberStatus extends ActiveRecord
         return $this->hasOne(static::findClass($class, __NAMESPACE__), ['id' => 'message_id']);
     }
 
-    /**
-     * Смена статуса на прочтено
-     *
-     * @param $memberId
-     * @param $messageId
-     * @return int
-     */
-    public static function read($memberId, $messageId)
-    {
-        var_dump($memberId, $messageId);
-        return static::updateAll(
-            [
-                'status' => static::STATUS_ARCHIVED
-            ],
-            [
-                'member_id' => $memberId,
-                'message_id' => $messageId,
-            ]
-        );
-    }
 }
