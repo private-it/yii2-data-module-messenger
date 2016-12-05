@@ -5,6 +5,7 @@
 namespace PrivateIT\modules\messenger\models;
 
 use PrivateIT\modules\messenger\MessengerModule;
+use PrivateIT\modules\messenger\models\query\MessageMemberStatusActiveQuery;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
@@ -21,6 +22,10 @@ use yii\db\Expression;
  *
  * @property Member[] $members
  * @property Message[] $messages
+ *
+ * @property MessageMemberStatus[] $activeMessageStatuses
+ * @property boolean $isActiveMember
+ * @property integer $countActiveMessages
  */
 class Dialog extends ActiveRecord
 {
@@ -271,4 +276,40 @@ class Dialog extends ActiveRecord
         return $this->hasMany(static::findClass($class, __NAMESPACE__), ['dialog_id' => 'id']);
     }
 
+
+    /**
+     * @return boolean
+     */
+    public function getIsActiveMember()
+    {
+        return (boolean)MessageMemberStatus::find()
+            ->joinWith(['member as member', 'message as message'])
+            ->andWhere(['member.user_id' => \Yii::$app->user->getId()])
+            ->andWhere(['message.dialog_id' => $this->id])
+            ->limit(1)
+            ->count();
+
+    }
+
+    /**
+     * @return MessageMemberStatusActiveQuery
+     */
+    public function getActiveMessageStatuses()
+    {
+        return MessageMemberStatus::find()
+            ->alias('t')
+            ->joinWith(['member as member', 'message as message'])
+            ->andWhere(['member.user_id' => \Yii::$app->user->getId()])
+            ->andWhere(['message.dialog_id' => $this->id])
+            ->andWhere(['t.status' => MessageMemberStatus::STATUS_ACTIVE]);
+
+    }
+
+    /**
+     * @return integer
+     */
+    public function getCountActiveMessages()
+    {
+        return $this->isActiveMember ? $this->getActiveMessageStatuses()->count() : $this->getMessages()->count();
+    }
 }
