@@ -286,6 +286,7 @@ class Member extends ActiveRecord
         return $this->hasMany(static::findClass($class, __NAMESPACE__), ['member_id' => 'id']);
     }
 
+
     /**
      * Присоединить пользователя в диалог
      *
@@ -315,6 +316,16 @@ class Member extends ActiveRecord
     }
 
     /**
+     * Непрочитанные сообщения
+     *
+     * @return MessageMemberStatusActiveQuery
+     */
+    public function getUnreadMessages()
+    {
+        return $this->getMessageMemberStatuses()->andWhere(['status' => MessageMemberStatus::STATUS_ACTIVE]);
+    }
+
+    /**
      * Добавить сообщение в диалог
      *
      * @param $text
@@ -326,16 +337,6 @@ class Member extends ActiveRecord
     }
 
     /**
-     * Непрочитанные сообщения
-     *
-     * @return MessageMemberStatusActiveQuery
-     */
-    public function getUnreadMessages()
-    {
-        return $this->getMessageMemberStatuses()->andWhere(['status' => MessageMemberStatus::STATUS_ACTIVE]);
-    }
-
-    /**
      * Установка статуса для сообщения "прочитано"
      *
      * @param $messageId
@@ -343,6 +344,29 @@ class Member extends ActiveRecord
      */
     public function readMessage($messageId)
     {
-        return MessageMemberStatus::read($this->getId(), $messageId);
+        $status = MessageMemberStatus::find()
+            ->andWhere([
+                'message_id' => $messageId,
+                'member_id' => $this->id,
+            ])
+            ->one();
+        if ($status) {
+            $status->setStatus(MessageMemberStatus::STATUS_ARCHIVED);
+            return $status->save(false, ['status']);
+        }
+        return false;
+    }
+
+    /**
+     * Установка статуса для всех непроситанных сообщений "прочитано"
+     *
+     * @return int
+     */
+    public function readAllMessages()
+    {
+        foreach ($this->messageMemberStatuses as $status) {
+            $status->setStatus(MessageMemberStatus::STATUS_ARCHIVED);
+            $status->save(false);
+        }
     }
 }

@@ -5,6 +5,8 @@
 namespace PrivateIT\modules\messenger\models;
 
 use PrivateIT\modules\messenger\MessengerModule;
+use PrivateIT\modules\messenger\models\query\ActiveQuery;
+use PrivateIT\modules\messenger\models\query\MessageMemberStatusActiveQuery;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\Expression;
@@ -23,6 +25,7 @@ use yii\db\Expression;
  * @property Dialog $dialog
  * @property Member $member
  * @property MessageMemberStatus[] $messageMemberStatuses
+ * @property MessageMemberStatus[] $archivedMessageStatuses
  */
 class Message extends ActiveRecord
 {
@@ -309,6 +312,12 @@ class Message extends ActiveRecord
         return $this->hasMany(static::findClass($class, __NAMESPACE__), ['message_id' => 'id']);
     }
 
+    /**
+     * @param int $dialogId
+     * @param int $memberId
+     * @param string $text
+     * @return bool|static|Message
+     */
     public static function send($dialogId, $memberId, $text)
     {
         /** @var static $message */
@@ -319,16 +328,36 @@ class Message extends ActiveRecord
         $message->setStatus(static::STATUS_ACTIVE);
         if ($message->save(false)) {
             foreach ($message->dialog->members as $member) {
-                if ($member->id != $memberId) {
-                    $status = new MessageMemberStatus;
-                    $status->setMessageId($message->id);
-                    $status->setMemberId($member->id);
-                    $status->setStatus(MessageMemberStatus::STATUS_ACTIVE);
-                    $status->save(false);
-                }
+                $status = new MessageMemberStatus;
+                $status->setMessageId($message->id);
+                $status->setMemberId($member->id);
+                $status->setStatus(
+                    $member->id == $memberId
+                        ? MessageMemberStatus::STATUS_ARCHIVED
+                        : MessageMemberStatus::STATUS_ACTIVE
+                );
+                $status->save(false);
             };
             return $message;
         }
         return false;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getIsRead()
+    {
+        return sizeof($this->archivedMessageStatuses) > 0 || sizeof($this->messageMemberStatuses) == 1;
+    }
+
+    /**
+     * @return MessageMemberStatusActiveQuery|ActiveQuery
+     */
+    public function getArchivedMessageStatuses()
+    {
+        return $this->getMessageMemberStatuses()
+            ->andOnCondition(['!=', 'member_id', $this->member_id])
+            ->andOnCondition(['status' => MessageMemberStatus::STATUS_ARCHIVED]);
     }
 }
