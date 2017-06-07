@@ -364,9 +364,29 @@ class Member extends ActiveRecord
      */
     public function readAllMessages()
     {
-        foreach ($this->messageMemberStatuses as $status) {
-            $status->setStatus(MessageMemberStatus::STATUS_ARCHIVED);
-            $status->save(false);
+        if ($this->messageMemberStatuses) {
+            foreach ($this->messageMemberStatuses as $status) {
+                $status->setStatus(MessageMemberStatus::STATUS_ARCHIVED);
+                $status->save(false);
+            }
+        } else {
+            $lastMessageId = Message::find()
+                ->andWhere([
+                    'dialog_id' => $this->dialog_id,
+                ])
+                ->andWhere([
+                    '!=', 'member_id', $this->id,
+                ])
+                ->select('id')
+                ->orderBy(['id' => SORT_DESC])
+                ->scalar();
+            if ($lastMessageId) {
+                $status = new MessageMemberStatus;
+                $status->setMessageId($lastMessageId);
+                $status->setMemberId($this->id);
+                $status->setStatus(MessageMemberStatus::STATUS_ARCHIVED);
+                $status->save(false);
+            }
         }
     }
 }
