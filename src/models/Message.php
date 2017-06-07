@@ -2,6 +2,7 @@
 /**
  * Created by ERDConverter
  */
+
 namespace PrivateIT\modules\messenger\models;
 
 use PrivateIT\modules\messenger\MessengerModule;
@@ -21,6 +22,9 @@ use yii\db\Expression;
  * @property integer $status
  * @property string $created_at
  * @property string $updated_at
+ *
+ * @property integer $firstReadId
+ * @property boolean $isRead
  *
  * @property Dialog $dialog
  * @property Member $member
@@ -346,9 +350,21 @@ class Message extends ActiveRecord
     /**
      * @return boolean
      */
+    public function getFirstReadId()
+    {
+        return MessageMemberStatus::find()
+            ->select('message_id')
+            ->andWhere(['member_id' => $this->member_id])
+            ->orderBy(['id' => SORT_ASC])
+            ->scalar();
+    }
+
+    /**
+     * @return boolean
+     */
     public function getIsRead()
     {
-        return sizeof($this->archivedMessageStatuses) > 0 || sizeof($this->messageMemberStatuses) == 1;
+        return $this->id < $this->getFirstReadId() || sizeof($this->archivedMessageStatuses) > 0;
     }
 
     /**
